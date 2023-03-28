@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-    - main
+    - main-remove-action
 jobs:
   deploy:
     runs-on: ubuntu-latest

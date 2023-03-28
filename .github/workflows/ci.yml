@@ -1,24 +1,24 @@
 name: Continuous integration
 
-on:
-  push:
-    branches:
-    - main 
-    paths-ignore:
-    - '**.md'
-    - 'CITATION.cff'
-    - 'LICENSE'
-    - '.gitignore'
-    - 'docs/**'
-  pull_request:
-    branches:
-    - main 
-    paths-ignore:
-    - '**.md'
-    - 'CITATION.cff'
-    - 'LICENSE'
-    - '.gitignore'
-    - 'docs/**'
+# on:
+#   push:
+#     branches:
+#     - main 
+#     paths-ignore:
+#     - '**.md'
+#     - 'CITATION.cff'
+#     - 'LICENSE'
+#     - '.gitignore'
+#     - 'docs/**'
+#   pull_request:
+#     branches:
+#     - main 
+#     paths-ignore:
+#     - '**.md'
+#     - 'CITATION.cff'
+#     - 'LICENSE'
+#     - '.gitignore'
+#     - 'docs/**'
   workflow_dispatch:
     inputs:
       manual_revision_reference:
