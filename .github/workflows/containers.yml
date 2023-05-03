@@ -60,9 +60,13 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        uses: docker/metadata-action@v4
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha
+            type=sha,format=long
+            type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build & push training Docker image
         id: build-and-push-training
@@ -75,13 +79,13 @@ jobs:
           file: Dockerfile.training
           platforms: linux/amd64,linux/arm64
 
-      - name: Build and push test Docker image
-        id: build-and-push-test
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}-test
-          labels: ${{ steps.meta.outputs.labels }}
-          file: Dockerfile.test
-          platforms: linux/amd64,linux/arm64
+      # - name: Build and push test Docker image
+      #   id: build-and-push-test
+      #   uses: docker/build-push-action@v4
+      #   with:
+      #     context: .
+      #     push: true
+      #     tags: ${{ steps.meta.outputs.tags }}-test
+      #     labels: ${{ steps.meta.outputs.labels }}
+      #     file: Dockerfile.test
+      #     platforms: linux/amd64,linux/arm64
