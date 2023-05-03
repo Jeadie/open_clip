@@ -66,7 +66,7 @@ jobs:
           tags: |
             type=sha
             type=sha,format=long
-            type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=latest,enable=true
 
       - name: Build & push training Docker image
         id: build-and-push-training
